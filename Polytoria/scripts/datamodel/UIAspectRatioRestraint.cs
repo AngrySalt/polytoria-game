@@ -1,6 +1,4 @@
 using Polytoria.Attributes;
-using Polytoria.Creator.LSP.Schemas;
-using Polytoria.Enums;
 
 namespace Polytoria.Datamodel;
 
