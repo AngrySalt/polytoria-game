@@ -515,7 +515,7 @@ public partial class UIField : Instance
 
 		Vector2 size = _sizeOffset + (parentSize * _sizeRelative);
 		UIAspectRatioRestraint? aspectRatioConstraint = (UIAspectRatioRestraint?)FindChildByClass("UIAspectRatioRestraint");
-		if (aspectRatioConstraint != null && !aspectRatioConstraint.IsHidden)
+		if (aspectRatioConstraint != null)
 		{
 			if (aspectRatioConstraint.DominantAxis == DominantAxisEnum.Width)
 			{
