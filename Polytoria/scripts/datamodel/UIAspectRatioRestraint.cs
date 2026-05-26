@@ -1,4 +1,6 @@
 using Polytoria.Attributes;
+using Polytoria.Creator.LSP.Schemas;
+using Polytoria.Enums;
 
 namespace Polytoria.Datamodel;
 
@@ -7,6 +9,7 @@ public partial class UIAspectRatioRestraint : Instance
 {
 	private DominantAxisEnum _dominantAxis = default;
 	private float _aspectRatio = 1;
+	private UIField? oldParent = null;
 
 	[Editable, ScriptProperty]
 	public DominantAxisEnum DominantAxis
@@ -33,20 +36,32 @@ public partial class UIAspectRatioRestraint : Instance
 
 	private void UpdateParentSize()
 	{
-		if (IsHidden || Parent is not UIField field || field.NodeControl == null) return;
+		if (Parent is not UIField field || field.NodeControl == null) return;
 		field.RecomputeTransform();
 	}
 
 	public override void EnterTree()
 	{
 		UpdateParentSize();
+		if (oldParent == null && Parent is UIField parentField)
+		{
+			oldParent = parentField;
+		}
 		base.EnterTree();
 	}
 
-	public override void ExitTree()
+
+	public override void PostReparent()
 	{
-		UpdateParentSize();
-		base.ExitTree();
+		if (oldParent is UIField field && !field.IsHidden && field.NodeControl != null)
+		{
+			field.RecomputeTransform();
+		}
+		if (oldParent is UIField parentField)
+		{
+			oldParent = parentField;
+		}
+		base.PostReparent();
 	}
 }
 
