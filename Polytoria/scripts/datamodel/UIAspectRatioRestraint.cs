@@ -51,7 +51,7 @@ public partial class UIAspectRatioRestraint : Instance
 
 	public override void PostReparent()
 	{
-		if (oldParent is UIField field && !field.IsHidden && field.NodeControl != null)
+		if (oldParent is UIField field && field.NodeControl != null)
 		{
 			field.RecomputeTransform();
 		}
