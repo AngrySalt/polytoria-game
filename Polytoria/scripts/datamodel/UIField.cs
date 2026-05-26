@@ -514,6 +514,18 @@ public partial class UIField : Instance
 		}
 
 		Vector2 size = _sizeOffset + (parentSize * _sizeRelative);
+		UIAspectRatioRestraint? aspectRatioConstraint = (UIAspectRatioRestraint?)FindChildByClass("UIAspectRatioRestraint");
+		if (aspectRatioConstraint != null && !aspectRatioConstraint.IsHidden)
+		{
+			if (aspectRatioConstraint.DominantAxis == DominantAxisEnum.Width)
+			{
+				size.Y = size.X / aspectRatioConstraint.AspectRatio;
+			}
+			else
+			{
+				size.X = size.Y / aspectRatioConstraint.AspectRatio;
+			}
+		}
 
 		NodeControl.CustomMinimumSize = size;
 
