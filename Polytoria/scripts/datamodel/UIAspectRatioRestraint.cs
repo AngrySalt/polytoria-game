@@ -16,8 +16,8 @@ public partial class UIAspectRatioRestraint : Instance
 		get => _dominantAxis;
 		set
 		{
-			if (_dominantAxis == value) return;
 			_dominantAxis = value;
+			OnPropertyChanged();
 			UpdateParentSize();
 		}
 	}
@@ -27,8 +27,8 @@ public partial class UIAspectRatioRestraint : Instance
 		get => _scaleType;
 		set
 		{
-			if (_scaleType == value) return;
 			_scaleType = value;
+			OnPropertyChanged();
 			UpdateParentSize();
 		}
 	}

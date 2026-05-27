@@ -9,8 +9,6 @@ using Polytoria.Datamodel.Creator;
 #endif
 using Polytoria.Scripting;
 using Polytoria.Shared;
-using Polytoria.Utils;
-using System;
 
 namespace Polytoria.Datamodel;
 
@@ -548,7 +546,7 @@ public partial class UIField : Instance
 				Vector2 ratio;
 				float subordinateAxis = 1 / aspectRatioConstraint.AspectRatio;
 				float dominantAxis = 1;
-				float higherAxis = Math.Max(dominantAxis, subordinateAxis);
+				float higherAxis = Mathf.Max(dominantAxis, subordinateAxis);
 				dominantAxis /= higherAxis;
 				subordinateAxis /= higherAxis;
 
@@ -560,7 +558,7 @@ public partial class UIField : Instance
 				{
 					ratio = new Vector2(subordinateAxis, dominantAxis);
 				}
-				size = ratio * MathF.Min(maxSize.Value.X, maxSize.Value.Y);
+				size = ratio * Mathf.Min(maxSize.Value.X, maxSize.Value.Y);
 			}
 		}
 
