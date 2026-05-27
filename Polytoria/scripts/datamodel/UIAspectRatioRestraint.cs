@@ -6,6 +6,7 @@ namespace Polytoria.Datamodel;
 public partial class UIAspectRatioRestraint : Instance
 {
 	private DominantAxisEnum _dominantAxis = default;
+	private AspectRatioScaleType _scaleType = default;
 	private float _aspectRatio = 1;
 	private UIField? oldParent = null;
 
@@ -17,6 +18,17 @@ public partial class UIAspectRatioRestraint : Instance
 		{
 			if (_dominantAxis == value) return;
 			_dominantAxis = value;
+			UpdateParentSize();
+		}
+	}
+	[Editable, ScriptProperty]
+	public AspectRatioScaleType ScaleType
+	{
+		get => _scaleType;
+		set
+		{
+			if (_scaleType == value) return;
+			_scaleType = value;
 			UpdateParentSize();
 		}
 	}
@@ -68,4 +80,11 @@ public enum DominantAxisEnum
 {
 	Width = 0,
 	Height = 1
+}
+[ScriptEnum]
+public enum AspectRatioScaleType
+{
+	FitContainer = 0,
+	FitMaxSize = 1,
+	NoLimit = 2
 }
