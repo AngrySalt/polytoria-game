@@ -30,6 +30,7 @@ public partial class BuiltInAudioAsset : AudioAsset
 	{
 		{ BuiltInAudioPresetEnum.Jump, "jump.ogg" },
 		{ BuiltInAudioPresetEnum.Explosion, "explosion.ogg" },
+		{ BuiltInAudioPresetEnum.Death, "death.ogg" },
 	};
 
 	public static void RegisterAsset()
@@ -43,5 +44,5 @@ public partial class BuiltInAudioAsset : AudioAsset
 	}
 
 	[ScriptEnum]
-	public enum BuiltInAudioPresetEnum { Jump, Explosion };
+	public enum BuiltInAudioPresetEnum { Jump, Explosion, Death };
 }
