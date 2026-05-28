@@ -753,8 +753,10 @@ public partial class NPC : Physical
 
 		Character?.Animator?.StopAnimation();
 		Character?.Animator?.StopOneShotAnimation();
-		DeathSound?.Play();
-
+		if (DeathSound != null && !DeathSound.Playing)
+		{
+			DeathSound?.Play();
+		}
 		if (Character is PolytorianModel ptmodel)
 		{
 			ptmodel.StartRagdoll(Velocity);
