@@ -755,7 +755,7 @@ public partial class NPC : Physical
 		Character?.Animator?.StopOneShotAnimation();
 		if (DeathSound != null && !DeathSound.Playing)
 		{
-			DeathSound?.Play();
+			DeathSound.Play();
 		}
 		if (Character is PolytorianModel ptmodel)
 		{
